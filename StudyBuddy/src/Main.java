@@ -6,7 +6,7 @@ public class Main {
         Tasks tasks = new Tasks();
 
         while (true) {
-            System.out.println("\n=== Study Buddy v2.0 ===");
+            System.out.println("\n=== Study Buddy v3.0 ===");
             System.out.println("1. Add Task");
             System.out.println("2. View All Tasks");
             System.out.println("3. View Active Tasks");
@@ -25,9 +25,16 @@ public class Main {
                 String description = scanner.nextLine();
                 System.out.print("Set priority (HIGH/MEDIUM/LOW): ");
                 String priority = scanner.nextLine().toUpperCase();
+                System.out.print("Enter due date (yyyy-MM-dd, leave blank for none): ");
+                String dueDate = scanner.nextLine().trim();
+
+                if (!dueDate.isEmpty() && !Duedate.isValidDate(dueDate)) {
+                    System.out.println("Invalid due date format. Use yyyy-MM-dd.");
+                    dueDate = "";
+                }
 
                 if (isValidPriority(priority)) {
-                    tasks.addTask(description, priority);
+                    tasks.addTask(description, priority, dueDate);
                 } else {
                     System.out.println("Invalid priority. Use HIGH, MEDIUM, or LOW.");
                 }

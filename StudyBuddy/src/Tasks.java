@@ -11,8 +11,8 @@ public class Tasks {
         loadTasks();
     }
 
-    public void addTask(String description, String priority) {
-        Task task = new Task(description, priority);
+    public void addTask(String description, String priority, String dueDate) {
+        Task task = new Task(description, priority, dueDate);
         taskList.add(task);
         System.out.println("✓ Task added: " + description + " (Priority: " + priority + ")");
         saveTasks();
